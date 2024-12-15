@@ -1,0 +1,9 @@
+# Exclude environment files
+.env
+
+# Exclude development data
+dev-data/
+
+# Exclude node_modules
+node_modules/
+
