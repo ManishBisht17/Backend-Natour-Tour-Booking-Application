@@ -77,7 +77,7 @@ Before using the API, you need to set the variables in Postman depending on your
 
 ## Deployment
 
-The website is deployed using git on render.com. Below are the steps taken:
+The website is deployed using git on render.com. Below are the steps taken
 
 ```
 git init
