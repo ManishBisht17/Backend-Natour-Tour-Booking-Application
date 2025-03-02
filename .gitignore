@@ -4,6 +4,6 @@
 # Exclude development data
 dev-data/
 
-# Exclude node_modules
+# Exclude node_module
 node_modules/
 
