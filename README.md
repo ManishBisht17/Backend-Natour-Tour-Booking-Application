@@ -140,7 +140,4 @@ $ npm run debug (for debug)
 - Recently Viewed Tours
 - And More ! There's always room for improvement!
 
-## Acknowledgement
--If there are some errors or bugs send me dm for that
 
-- This project is part of the online course I've taken at Udemy. Thanks to [Jonas Schmedtmann](https://twitter.com/jonasschmedtman) for creating this awesome course!
