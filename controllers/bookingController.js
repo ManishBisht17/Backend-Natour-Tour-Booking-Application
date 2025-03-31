@@ -6,17 +6,17 @@ const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 const AppError = require('../utils/appError'); // Assuming you have a custom error handling utility
 
-// Stripe checkout - https://stripe.com/docs/payments/checkout
-// Stripe JS reference - https://stripe.com/docs/js
-// Stripe API reference - https://stripe.com/docs/api
+
 
 /**
  * @description - Create checkout session and send as response
  * @route - GET /checkout-session/:tourId
  */
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
+  console.log("tour is here")
   // 1) Get the currently booked tour
   const tour = await Tour.findById(req.params.tourId);
+
 
   if (!tour) {
     return next(new AppError('No tour found with that ID', 404));

@@ -1,30 +1,18 @@
-const multer = require('multer');
-const sharp = require('sharp');
+const multer = require("multer");
+const sharp = require("sharp");
 
-const User = require('../models/userModel');
-const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
-const factory = require('./handlerFactory');
-
-// Multer configuration
-// const multerStorage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'public/img/users');
-//   },
-//   filename: (req, file, cb) => {
-//     // user-8736482fgdf783-348763448734.jpeg
-//     const ext = file.mimetype.split('/')[1];
-//     cb(null, `user-${req.user.id}-${Date.now()}.${ext}`);
-//   },
-// });
+const User = require("../models/userModel");
+const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
+const factory = require("./handlerFactory");
 
 const multerStorage = multer.memoryStorage();
 
 const multerFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith('image')) {
+  if (file.mimetype.startsWith("image")) {
     cb(null, true);
   } else {
-    cb(new AppError('Please upload only image.', 400), false);
+    cb(new AppError("Please upload only image.", 400), false);
   }
 };
 
@@ -34,7 +22,7 @@ const upload = multer({
 });
 
 // Upload user photo using multer
-exports.uploadUserPhoto = upload.single('photo');
+exports.uploadUserPhoto = upload.single("photo");
 
 // Resizing Images
 exports.resizeUserPhoto = async (req, res, next) => {
@@ -46,7 +34,7 @@ exports.resizeUserPhoto = async (req, res, next) => {
 
   await sharp(req.file.buffer)
     .resize(500, 500)
-    .toFormat('jpeg')
+    .toFormat("jpeg")
     .jpeg({ quality: 90 })
     .toFile(`public/img/users/${req.file.filename}`);
 
@@ -84,14 +72,14 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.passwordConfirm) {
     return next(
       new AppError(
-        'This route is not for password updates. Please use /updateMyPassword.',
+        "This route is not for password updates. Please use /updateMyPassword.",
         400
       )
     );
   }
 
   // 2) Filtered out unwanted fields names that are not allowed to be updated
-  const filterBody = filterObj(req.body, 'name', 'email');
+  const filterBody = filterObj(req.body, "name", "email");
 
   // (Optional) If user uploads new photo then add it to filterbody object
   if (req.file) filterBody.photo = req.file.filename;
@@ -103,7 +91,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: {
       user: updatedUser,
     },
@@ -118,7 +106,7 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });
 
   res.status(204).json({
-    status: 'success',
+    status: "success",
     data: null,
   });
 });
@@ -129,7 +117,7 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
  */
 exports.createUser = (req, res) => {
   res.status(500).json({
-    status: 'error',
+    status: "error",
     message: 'This route is not defined! Please use "/signup" instead.',
   });
 };
