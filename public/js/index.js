@@ -86,7 +86,10 @@ if (tourBookingBtn) {
   tourBookingBtn.addEventListener('click', (e) => {
     e.target.textContent = 'Processing...';
     const { tourId } = e.target.dataset;
+<<<<<<< HEAD
     console.log(e.target.dataset)
+=======
+>>>>>>> b59b583def465e0c9343d6333b1ed8cf5e4f6438
     bookTour(tourId);
   });
 }
