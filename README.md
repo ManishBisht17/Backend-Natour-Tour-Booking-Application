@@ -25,7 +25,7 @@
 
 ## Deployed Version
 
-Live demo (Feel free to visit) 👉 : https://natourmanish.onrender.com/
+Update the Website Live demo (Feel free to visit) 👉 : https://tour-booking-app-kjby.onrender.com/
 
 ## Key Features
 
