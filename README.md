@@ -52,7 +52,7 @@ Update the Website Live demo (Feel free to visit) 👉 : https://tour-booking-ap
   - Expiry date: any
   - CVV: any
   ```
-- Finished!
+
 
 ### Manage your booking
 
